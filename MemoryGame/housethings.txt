@@ -1,0 +1,8 @@
+cars
+pens
+shoe
+desk
+rags
+book
+fork
+hats
