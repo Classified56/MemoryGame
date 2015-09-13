@@ -6,3 +6,11 @@ mice
 apes
 fish
 cows
+bird
+lion
+dogs
+cats
+mice
+apes
+fish
+cows

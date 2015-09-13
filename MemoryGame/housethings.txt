@@ -6,3 +6,11 @@ rags
 book
 fork
 hats
+cars
+pens
+shoe
+desk
+rags
+book
+fork
+hats
