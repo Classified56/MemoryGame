@@ -20,8 +20,7 @@ public class concentration
 							}
 					}
 				makeGrid();
-				boolean game = true;
-				while(game)
+				while(true)
 					{
 						guessAndCheckGrid();
 						int test = 0;
@@ -37,7 +36,7 @@ public class concentration
 							}
 						if(test == 0)
 							{
-								game = false;
+								break;
 							}
 					}
 				System.out.println("\nCongratulations. It took you " + counter + " times to match all of the words.");
@@ -110,7 +109,7 @@ public class concentration
 		
 		public static void chooseArrayTheme() throws IOException
 			{
-				System.out.print("What theme would you like? (a. Animals b. Household Items)");
+				System.out.print("What theme would you like? \na. Animals b. Household Items c. Names d. Actions ");
 				String themeSel = userTheme.next();
 				char userLetter = themeSel.charAt(0);
 				switch(userLetter)
@@ -120,6 +119,12 @@ public class concentration
 							break;
 						case 'b': 
 							file = new Scanner(new File("housethings.txt"));
+							break;
+						case 'c':
+							file = new Scanner(new File("names.txt"));
+							break;
+						case 'd':
+							file = new Scanner(new File("Actions.txt"));
 							break;
 					}
 				for(int i = 0; i < 4; i++)
