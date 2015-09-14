@@ -55,20 +55,28 @@ public class concentration
 						gridGuess[i] = userGuess.nextLine();
 						row[i] = gridGuess[i].charAt(1);
 						col[i] = gridGuess[i].charAt(0);
-						if(col[i] > 96)
+						if(ansArr[row[i] - 49][col[i] - 97].equals("    "))
 							{
-								ansArr[row[i] - 49][col[i] - 97] = guessArr[row[i] - 49][col[i] - 97];
-								guess[i] = ansArr[row[i] - 49][col[i] - 97];
-								makeGrid();
+								if(col[i] > 96)
+									{
+										ansArr[row[i] - 49][col[i] - 97] = guessArr[row[i] - 49][col[i] - 97];
+										guess[i] = ansArr[row[i] - 49][col[i] - 97];
+										makeGrid();
+									}
+								else
+									{
+										ansArr[row[i] - 49][col[i] - 65] = guessArr[row[i] - 49][col[i] - 65];
+										guess[i] = ansArr[row[i] - 49][col[i] - 97];
+										makeGrid();
+									}
 							}
 						else
 							{
-								ansArr[row[i] - 49][col[i] - 65] = guessArr[row[i] - 49][col[i] - 65];
-								guess[i] = ansArr[row[i] - 49][col[i] - 97];
-								makeGrid();
+								System.out.print("That spot is already solved. ");
+								i--;
 							}
 					}
-				if(guess[1].equals(guess[2]))
+				if(guess[0].equals(guess[1]))
 					{
 						counter++;
 						System.out.print("Good job. ");
@@ -76,10 +84,10 @@ public class concentration
 				else
 					{
 						counter++;
-						Thread.sleep(2500);
+						Thread.sleep(2000);
 						System.out.println("\n \n \nThat was wrong.");
+						ansArr[row[0] - 49][col[0] - 97] = "    ";
 						ansArr[row[1] - 49][col[1] - 97] = "    ";
-						ansArr[row[2] - 49][col[2] - 97] = "    ";
 						makeGrid();
 					}
 			}
