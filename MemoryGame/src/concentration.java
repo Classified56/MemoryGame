@@ -15,9 +15,7 @@ public class concentration
 				for(int i = 0; i < 4; i++)
 					{
 						for(int j = 0; j < 4; j++)
-							{
 								ansArr[i][j] = "    ";
-							}
 					}
 				makeGrid();
 				while(true)
@@ -44,43 +42,33 @@ public class concentration
 
 		public static void guessAndCheckGrid() throws InterruptedException
 			{
-				String guess1 = "a", guess2 = "b";
-				if(counter == 0)
-					System.out.print("Please choose a position. (i.e. b3, a1) ");
-				else
-					System.out.print("Please choose a position. ");
-				String gridGuess1 = userGuess.nextLine();
-				char row1 = gridGuess1.charAt(1);
-				char col1 = gridGuess1.charAt(0);
-				if(col1 > 96)
+				String guess[] = new String[2];
+				char row[] = new char[2];
+				char col[] = new char[2];
+				String gridGuess[] = new String[2];
+				for(int i = 0; i < 2; i++)
 					{
-						ansArr[row1 - 49][col1 - 97] = guessArr[row1 - 49][col1 - 97];
-						guess1 = ansArr[row1 - 49][col1 - 97];
-						makeGrid();
+						if(counter == 0)
+							System.out.print("Please choose a position. (i.e. b3, a1) ");
+						else
+							System.out.print("Please choose a position. ");
+						gridGuess[i] = userGuess.nextLine();
+						row[i] = gridGuess[i].charAt(1);
+						col[i] = gridGuess[i].charAt(0);
+						if(col[i] > 96)
+							{
+								ansArr[row[i] - 49][col[i] - 97] = guessArr[row[i] - 49][col[i] - 97];
+								guess[i] = ansArr[row[i] - 49][col[i] - 97];
+								makeGrid();
+							}
+						else
+							{
+								ansArr[row[i] - 49][col[i] - 65] = guessArr[row[i] - 49][col[i] - 65];
+								guess[i] = ansArr[row[i] - 49][col[i] - 97];
+								makeGrid();
+							}
 					}
-				else
-					{
-						ansArr[row1 - 49][col1 - 65] = guessArr[row1 - 49][col1 - 65];
-						guess1 = ansArr[row1 - 49][col1 - 97];
-						makeGrid();
-					}
-				System.out.print("Please choose a position. ");
-				String gridGuess2 = userGuess.nextLine();
-				char row2 = gridGuess2.charAt(1);
-				char col2 = gridGuess2.charAt(0);
-				if(col2 > 96)
-					{
-						ansArr[row2 - 49][col2 - 97] = guessArr[row2 - 49][col2 - 97];
-						guess2 = ansArr[row2 - 49][col2 - 97];
-						makeGrid();
-					}
-				else
-					{
-						ansArr[row2 - 49][col2 - 65] = guessArr[row2 - 49][col2 - 65];
-						guess2 = ansArr[row2 - 49][col2 - 97];
-						makeGrid();
-					}
-				if(guess1.equals(guess2))
+				if(guess[1].equals(guess[2]))
 					{
 						counter++;
 						System.out.print("Good job. ");
@@ -90,8 +78,8 @@ public class concentration
 						counter++;
 						Thread.sleep(2500);
 						System.out.println("\n \n \nThat was wrong.");
-						ansArr[row1 - 49][col1 - 97] = "    ";
-						ansArr[row2 - 49][col2 - 97] = "    ";
+						ansArr[row[1] - 49][col[1] - 97] = "    ";
+						ansArr[row[2] - 49][col[2] - 97] = "    ";
 						makeGrid();
 					}
 			}
